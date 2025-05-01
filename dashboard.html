@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="stle.css">
+        <script>
+            window.onload = function(){ 
+                const userEmail = sessionStorage.getItem('userEmail');// Get the email from session storage
+                //check if the user is connected
+                if(!userEmail){
+                    //redirect to login page
+                    window.location.href = 'index.html';
+                    return;
+                }
+                //Display the email on the dashboard
+                document.getElementById('userEmail').textContent = userEmail;
+            };
+
+            function logout(){
+                // Clear the session storage
+                sessionStorage.removeItem('userEmail');
+                // Redirect to the login page
+                window.location.href = 'index.html';
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Bienvenue dans votre espace personnel</h1>
+        <p>Connecte en tant que :<strong id="userEmail"></strong></p>
+
+        <button onclick="logout()">Se deconnecte</button>
+    </body>
+</html>
